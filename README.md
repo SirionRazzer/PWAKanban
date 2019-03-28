@@ -1,11 +1,14 @@
 # PWAKanban
-PWA kanban board
+
+PWA kanban board stored offline on a device.
 
 # Core components
+
 * manifest.json
 * serviceworker.js
 
 # Technologies used
+
 * MVVM bindings between JS and HTML with [Knockout](http://knockoutjs.com/)
 * Code check with [Lighthouse](https://github.com/GoogleChrome/lighthouse)
 * PWA library [Workbox](https://developers.google.com/web/tools/workbox/)
