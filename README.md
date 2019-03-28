@@ -5,7 +5,7 @@ PWA kanban board stored offline on a device.
 # Core components
 
 * manifest.json
-* serviceworker.js
+* service-worker.js
 
 # Technologies used
 
