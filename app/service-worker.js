@@ -61,6 +61,13 @@ workbox.routing.registerRoute(
 );
 
 
+// Knockoutjs MVVM library
+workbox.routing.registerRoute(
+	https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js
+	new workbox.strategies.StaleWhileRevalidate(),
+);
+
+
 // Google Fonts
 workbox.routing.registerRoute(
 	// Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
