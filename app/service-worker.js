@@ -63,7 +63,7 @@ workbox.routing.registerRoute(
 
 // Knockoutjs MVVM library
 workbox.routing.registerRoute(
-	https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js
+	'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js',
 	new workbox.strategies.StaleWhileRevalidate(),
 );
 
