@@ -68,6 +68,20 @@ workbox.routing.registerRoute(
 );
 
 
+// JQuery library
+workbox.routing.registerRoute(
+	'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js',
+	new workbox.strategies.StaleWhileRevalidate(),
+);
+
+
+// Bootstrap styling library
+workbox.routing.registerRoute(
+	'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js',
+	new workbox.strategies.StaleWhileRevalidate(),
+);
+
+
 // Google Fonts
 workbox.routing.registerRoute(
 	// Cache the Google Fonts stylesheets with a stale-while-revalidate strategy.
