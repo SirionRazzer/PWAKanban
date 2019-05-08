@@ -8,7 +8,7 @@ if ('serviceWorker' in navigator) {
 
 // Initialize Dragula
 var drake = null;
-window.onload = function() {
+window.onload = function () {
     drake = dragula([document.getElementById('list1')]);
     console.log(drake.containers);
 }
@@ -41,22 +41,33 @@ function TaskListViewModel() {
     self.listName = ko.observable();
     self.tasks = ko.observableArray([]);
     self.newTaskText = ko.observable();
-    self.incompleteTasks = ko.computed(function() {
-        return ko.utils.arrayFilter(self.tasks(), function(task) { return !task.isDone() });
+    self.incompleteTasks = ko.computed(function () {
+        return ko.utils.arrayFilter(self.tasks(), function (task) {
+            return !task.isDone()
+        });
     });
 
     // Operations
-    self.addTask = function() {
-        self.tasks.push(new Task({ text: this.newTaskText()})); //, position: this.tasks.length, isDone: false 
+    self.addTask = function () {
+        self.tasks.push(new Task({
+            text: this.newTaskText()
+        })); //, position: this.tasks.length, isDone: false 
         self.newTaskText("");
+        hideModal();
     };
-    self.removeTask = function(task) { self.tasks.remove(task) };
+    self.removeTask = function (task) {
+        self.tasks.remove(task)
+    };
 
     // // Load initial state from server, convert it to Task instances, then populate self.tasks
     // $.getJSON("/tasks", function(allData) {
     //     var mappedTasks = $.map(allData, function(item) { return new Task(item) });
     //     self.tasks(mappedTasks);
     // });    
+}
+
+function hideModal() {
+    $('#addModal').modal('hide');
 }
 
 ko.applyBindings(new TaskListViewModel());
