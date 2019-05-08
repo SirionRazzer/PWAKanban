@@ -13,22 +13,6 @@ window.onload = function () {
     console.log(drake.containers);
 }
 
-// Data view models
-// function Item(itemText) {
-//     var self = this;
-//     self.text = ko.observable(itemText);
-// }
-
-// function ItemsViewModel() {
-//     var self = this;
-
-//     self.items = ko.observableArray([
-//         new ItemsViewModel("item")
-//     ]);
-// }
-
-// ko.applyBindings(new ItemsViewModel());
-
 function Task(data) {
     this.text = ko.observable(data.text);
     this.position = ko.observable(data.position);
@@ -69,5 +53,13 @@ function TaskListViewModel() {
 function hideModal() {
     $('#addModal').modal('hide');
 }
+
+// function toggleSpinner(enabled) {
+//     if (enabled) {
+//         document.getElementById("spinner").style.visibility = "visible";
+//     } else {
+//         document.getElementById("spinner").style.visibility = "invisible";
+//     }
+// } 
 
 ko.applyBindings(new TaskListViewModel());

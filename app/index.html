@@ -17,77 +17,68 @@
     <link rel="icon" type="image/png" sizes="72x72" href="/images/icons/icon-72x72.png">
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <link rel="stylesheet" type="text/css" href="dragula.min.css">
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <title>PWAKanban</title>
 </head>
 
 <body>
-    <!-- <div class="container">
-        <div class="card" width="100%">
-            <div class="card-header">
-                Featured
-            </div>
-            <ul id='list1' class="list-group list-group-flush" style="min-height: 10rem;">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <button type="button" class="btn btn-light btn-block align-self-end" data-toggle="modal"
-                data-target="#addTaskModal">+</button>
-        </div>
-    </div> -->
-
     <div class="container">
-        <div class="card" width="100%">
+        <div class="card mt-3" width="100%">
             <div class="card-header">
-                Tasks
+                <div class="d-flex align-items-center">
+                    Tasks
+                    <!-- <div class="spinner-border" id="spinner" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div> -->
+                </div>
             </div>
-            <ul id='list1' class="list-group list-group-flush" style="min-height: 10rem;"
-                data-bind="foreach: tasks, visible: tasks().length > 0">
-                <li class="list-group-item">
-                    <p data-bind="text: text"></p>
-                </li>
-            </ul>
-            <button type="button" class="btn btn-light btn-block align-self-end" data-toggle="modal"
-                data-target="#addModal">+</button>
+            <div style="min-height: 3rem;">
+                <ul id='list1' class="list-group list-group-flush"
+                    data-bind="foreach: tasks, visible: tasks().length > 0">
+                    <li class="list-group-item list-group-item-action" data-bind="text: text"></li>
+                </ul>
+            </div>
+            <!--<div class="card-footer bg-transparent">-->
+            <button type="button" class="btn btn-block btn-lg border-top btn-add" data-toggle="modal"
+                data-target="#addModal">Add</button>
+            <!--</div>-->
         </div>
-    </div>
 
-    <!--Add task modal-->
-    <div class="modal" tabindex="-1" role="dialog" id="addModal" aria-labelledby="addTaskModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form data-bind="submit: addTask">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <input type="text" data-bind="value: newTaskText" class="form-control" id="taskText">
+        <!--Add task modal-->
+        <div class="modal" tabindex="-1" role="dialog" id="addModal" aria-labelledby="addTaskModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form data-bind="submit: addTask">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Task</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit button" class="btn btn-primary custom-close">Submit</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                    
-                </form>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" data-bind="value: newTaskText" class="form-control" id="taskText">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit button" class="btn btn-primary custom-close">Add</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <!--Dragula is hopefully handled through service worker-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="app.js"></script>
+        <!--Dragula is hopefully handled through service worker-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="app.js"></script>
 </body>
 
 </html>
