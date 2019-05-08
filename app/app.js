@@ -9,7 +9,7 @@ if ('serviceWorker' in navigator) {
 // Initialize Dragula
 var drake = null;
 window.onload = function() {
-    drake = dragula([document.getElementById('right1')]);
+    drake = dragula([document.getElementById('list1')]);
     console.log(drake.containers);
 }
 
@@ -30,13 +30,15 @@ window.onload = function() {
 // ko.applyBindings(new ItemsViewModel());
 
 function Task(data) {
-    this.title = ko.observable(data.title);
+    this.text = ko.observable(data.text);
+    this.position = ko.observable(data.position);
     this.isDone = ko.observable(data.isDone);
 }
 
 function TaskListViewModel() {
     // Data
     var self = this;
+    self.listName = ko.observable();
     self.tasks = ko.observableArray([]);
     self.newTaskText = ko.observable();
     self.incompleteTasks = ko.computed(function() {
@@ -45,7 +47,7 @@ function TaskListViewModel() {
 
     // Operations
     self.addTask = function() {
-        self.tasks.push(new Task({ title: this.newTaskText() }));
+        self.tasks.push(new Task({ text: this.newTaskText()})); //, position: this.tasks.length, isDone: false 
         self.newTaskText("");
     };
     self.removeTask = function(task) { self.tasks.remove(task) };
