@@ -1,3 +1,9 @@
 body {background-color: #026AA7}
-.btn-add {border-radius: 0;}
-.card {border-radius: 0;}
+
+.btn-add {
+    border-radius: 0;
+}
+
+.card {
+    border-radius: 0;
+}
