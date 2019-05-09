@@ -54,6 +54,7 @@ function hideModal() {
     $('#addModal').modal('hide');
 }
 
+
 // function toggleSpinner(enabled) {
 //     if (enabled) {
 //         document.getElementById("spinner").style.visibility = "visible";

@@ -75,12 +75,10 @@ workbox.routing.registerRoute(
 );
 
 
-// Bootstrap styling library
 workbox.routing.registerRoute(
-	'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js',
+	'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js',
 	new workbox.strategies.StaleWhileRevalidate(),
 );
-
 
 // Google Fonts
 workbox.routing.registerRoute(
