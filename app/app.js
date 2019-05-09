@@ -6,15 +6,6 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Initialize Dragula
-var drake = null;
-window.onload = function () {
-    drake = dragula([document.getElementById('list1')], {
-        removeOnSpill: true
-      });
-    console.log(drake.containers);
-}
-
 function Task(data) {
     this.text = ko.observable(data.text);
     this.position = ko.observable(data.position);
@@ -39,6 +30,7 @@ function TaskListViewModel() {
             text: this.newTaskText()
         })); //, position: this.tasks.length, isDone: false 
         self.newTaskText("");
+        console.log(this.tasks().length);
         hideModal();
     };
     self.removeTask = function (task) {
@@ -65,4 +57,21 @@ function hideModal() {
 //     }
 // } 
 
-ko.applyBindings(new TaskListViewModel());
+var model = new TaskListViewModel()
+ko.applyBindings(model);
+
+// Initialize Dragula
+var drake = null
+window.onload = function () {
+    drake = dragula([document.getElementById('list1')], {
+        removeOnSpill: true
+    }).on('remove', function (el) {
+        //el.className += ' ex-moved';
+        console.log("remove");
+        console.log(model.tasks().length);
+    }).on('drop', function () {
+        console.log("drop");
+        console.log(model.tasks().length);
+    });
+    console.log(drake.containers);
+}
