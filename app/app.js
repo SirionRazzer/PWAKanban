@@ -9,7 +9,9 @@ if ('serviceWorker' in navigator) {
 // Initialize Dragula
 var drake = null;
 window.onload = function () {
-    drake = dragula([document.getElementById('list1')]);
+    drake = dragula([document.getElementById('list1')], {
+        removeOnSpill: true
+      });
     console.log(drake.containers);
 }
 
