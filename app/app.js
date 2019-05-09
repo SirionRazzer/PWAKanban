@@ -8,8 +8,7 @@ if ('serviceWorker' in navigator) {
 
 function Task(data) {
     this.text = ko.observable(data.text);
-    this.position = ko.observable(data.position);
-    this.isDone = ko.observable(data.isDone);
+    this.position = data.position;
 }
 
 function TaskListViewModel() {
@@ -18,33 +17,36 @@ function TaskListViewModel() {
     self.listName = ko.observable();
     self.tasks = ko.observableArray([]);
     self.newTaskText = ko.observable();
-    self.incompleteTasks = ko.computed(function () {
-        return ko.utils.arrayFilter(self.tasks(), function (task) {
-            return !task.isDone()
-        });
-    });
 
     // Operations
+    self.tasksCount = function () {
+        return self.tasks().length;
+    }
     self.addTask = function () {
         self.tasks.push(new Task({
             text: this.newTaskText(),
-            position: this.tasks().length,
-            isDone: false
-        })); //, position: this.tasks.length, isDone: false 
+            position: this.tasksCount()
+        }));
         self.newTaskText("");
-        console.log(this.tasks().length);
         hideModal();
     };
     self.swapTasks = function (position1, position2) {
-        var tmp = self.tasks[position1];
-        self.tasks[position1] = self.tasks[position2];
-        self.tasks[position2] = tmp;
+        // var tmp = self.tasks()[position1];
+        // self.tasks()[position1] = self.tasks()[position2];
+        // self.tasks()[position2] = tmp;
+        [self.tasks()[position1], self.tasks()[position2]] = [self.tasks()[position2], self.tasks()[position1]]
+        self.tasks()[position1].position = position1;
+        self.tasks()[position2].position = position2;
     };
     self.removeTask = function (task) {
-        self.tasks.remove(task)
+        self.tasks.remove(task);
     };
     self.removeNthTask = function (position) {
+        console.log("removing from position: " + position + " array size is: " + self.tasks().length);
         self.tasks.remove(self.tasks()[position]);
+        for (var i = position; i < self.tasks().length; i++) {
+            self.tasks()[i].position = i;
+        }
     };
 
     // // Load initial state from server, convert it to Task instances, then populate self.tasks
@@ -69,18 +71,15 @@ window.onload = function () {
     drake = dragula([document.getElementById('list1')], {
         removeOnSpill: true
     }).on('remove', function (el, container, source) {
-        //el.className += ' ex-moved';
-        console.log("remove");
-        console.log("from position:" + elementPosition(source));
-        console.log("tasks count:" + model.tasks().length);
+        printArrayStatus("before");
+        model.removeNthTask(tmpPositionStart);
+        printArrayStatus("after");
     }).on('drag', function (el, source) {
-        //el.className += ' ex-moved';
-        console.log("drag");
-        console.log("from position:" + elementPosition(el));
+        printArrayStatus("before");
+        console.log("drag from position:" + elementPosition(el));
         tmpPositionStart = elementPosition(el);
     }).on('drop', function (el) {
-        console.log("drop");
-        console.log("to position:" + elementPosition(el));
+        console.log("drop to position:" + elementPosition(el));
         tmpPositionEnd = elementPosition(el);
         if (tmpPositionStart != tmpPositionEnd) {
             model.swapTasks(tmpPositionStart, tmpPositionEnd);
@@ -90,8 +89,8 @@ window.onload = function () {
 }
 
 function elementPosition(element) {
-    if (element == null) return 0;
-    if (element.parentNode == null) return 0;
+    if (element == null) return -1;
+    if (element.parentNode == null) return -2;
 
     var position = 0;
     var children = element.parentNode.children;
@@ -102,4 +101,12 @@ function elementPosition(element) {
         position += 1;
     }
     return position;
+}
+
+function printArrayStatus(message) {
+    console.log("-----------" + message + "----------");
+    for (var i = 0; i < model.tasks().length; i++) {
+        console.log(i + ". element => " + model.tasks()[i].text() + model.tasks()[i].position);
+    }
+    console.log("count of elements: " + model.tasks().length);
 }

@@ -1,4 +1,6 @@
-body {background-color: #026AA7}
+body {
+    background-color: #026AA7
+}
 
 .btn-add {
     border-radius: 0;
@@ -6,4 +8,8 @@ body {background-color: #026AA7}
 
 .card {
     border-radius: 0;
+}
+
+.drag-drop-item {
+    touch-action: none;
 }
