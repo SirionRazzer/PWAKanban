@@ -6,6 +6,7 @@ PWA kanban board stored offline on a device.
 
 * manifest.json
 * service-worker.js
+* localStorage
 
 # Technologies used
 
