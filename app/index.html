@@ -24,6 +24,20 @@
 
 <body>
     <div class="container">
+        <nav class="navbar fixed-top justify-content-between">
+            <a class="navbar-brand" href="#">
+                <img src="images/icons/icon-192x192.png" width="30" height="30" alt="Logo image"
+                    class="d-inline-block align-top">
+                PWAKanban
+            </a>
+            <div>
+                <button type="button" class="btn btn-success" onclick="model.save();">Save</button>
+                <button type="button" class="btn btn-success" onclick="model.restore();">Restore</button>
+                <button type="button" class="btn btn-outline-light" data-toggle="modal"
+                    data-target="#infoModal">?</button>
+            </div>
+        </nav>
+
         <div class="row">
             <div class="col-sm-4">
                 <div class="card">
@@ -78,6 +92,7 @@
             <div class="container trash w-100" data-bind="sortable: trash">
             </div>
         </div>
+
         <script id="taskTmpl" type="text/html">
             <div class="item">
                  <span data-bind="visible: !$root.isTaskSelected($data)">
@@ -90,6 +105,27 @@
                 </span>
             </div>
         </script>
+
+        <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="Info modal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">PWAKanban</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Welcome to PWAKanban! You can create, edit, move and trash tasks. How to trash the task? Move it out of the list to the area below lists.
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
 
         <!-- <script src="https://code.jquery.com/jquery-3.4.0.min.js"
             integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous""></script>
