@@ -54,31 +54,40 @@ workbox.routing.registerRoute(
 );
 
 
-// Dragula drag'n'drop library
+// JQuery library
 workbox.routing.registerRoute(
-	'https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js',
+	'https://code.jquery.com/jquery-3.4.0.min.js',
+	new workbox.strategies.StaleWhileRevalidate(),
+);
+
+
+// jQuery UI - Extension library
+workbox.routing.registerRoute(
+	'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
 	new workbox.strategies.StaleWhileRevalidate(),
 );
 
 
 // Knockoutjs MVVM library
 workbox.routing.registerRoute(
-	'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js',
+	'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js',
 	new workbox.strategies.StaleWhileRevalidate(),
 );
 
 
-// JQuery library
+// Knockout - Sortable - Extension library
 workbox.routing.registerRoute(
-	'https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js',
+	'https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.1.1/knockout-sortable.min.js',
 	new workbox.strategies.StaleWhileRevalidate(),
 );
 
 
+// Bootstrap UI library
 workbox.routing.registerRoute(
-	'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js',
+	'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js',
 	new workbox.strategies.StaleWhileRevalidate(),
 );
+
 
 // Google Fonts
 workbox.routing.registerRoute(

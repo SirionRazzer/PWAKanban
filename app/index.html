@@ -17,7 +17,6 @@
     <link rel="icon" type="image/png" sizes="72x72" href="/images/icons/icon-72x72.png">
 
     <link rel="manifest" href="/manifest.json">
-    <link rel="stylesheet" type="text/css" href="dragula.min.css">
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <title>PWAKanban</title>
@@ -25,59 +24,80 @@
 
 <body>
     <div class="container">
-        <div class="card mt-3" width="100%">
-            <div class="card-header">
-                <div class="d-flex align-items-center">
-                    <strong>Tasks</strong>
-                    <!-- <div class="spinner-border" id="spinner" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div> -->
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <strong>High Priority</strong>
+                        </div>
+                    </div>
+                    <div style="min-height: 3rem;">
+                        <ul id='high' class="list-group list-group-flush"
+                            data-bind="sortable: {template: 'taskTmpl', data: highPriorityTasks, afterMove: myDropCallback }">
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div style="min-height: 3rem;">
-                <ul id='list1' class="list-group list-group-flush"
-                    data-bind="foreach: tasks, visible: tasks().length > 0">
-                    <li class="list-group-item list-group-item-action drag-drop-item" data-bind="text: text"/>
-                </ul>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <strong>Normal Priority</strong>
+                        </div>
+                    </div>
+                    <div style="min-height: 3rem;">
+                        <ul id='normal' class="list-group list-group-flush"
+                            data-bind="sortable: {template: 'taskTmpl', data: normalPriorityTasks, afterMove: myDropCallback }">
+                        </ul>
+                    </div>
+                    <button type="button" class="btn btn-block btn-lg border-top btn-add"
+                        data-bind="click: addTask">Add</button>
+                </div>
             </div>
-            <!--<div class="card-footer bg-transparent">-->
-            <button type="button" id="showModalBtn" class="btn btn-block btn-lg border-top btn-add" data-toggle="modal"
-                data-target="#addModal">Add</button>
-            <!--</div>-->
-        </div>
-
-        <!--Add task modal-->
-        <div class="modal fade" tabindex="-1" role="dialog" id="addModal" aria-labelledby="addTaskModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <form data-bind="submit: addTask">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Task</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <strong>Trash</strong>
                         </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <input type="text" data-bind="value: newTaskText" class="form-control" id="taskText">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit button" class="btn btn-primary custom-close">Add</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-
-                    </form>
+                    </div>
+                    <div style="min-height: 3rem;">
+                        <ul id='list3' class="list-group list-group-flush" data-bind="sortable: trash">
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+        <script id="taskTmpl" type="text/html">
+            <div class="item">
+                 <span data-bind="visible: !$root.isTaskSelected($data)">
+                    <li class="list-group-item list-group-item-action drag-drop-item" data-bind="text: name, click: $root.selectedTask"/>
+                </span>
+                <span data-bind="visibleAndSelect: $root.isTaskSelected($data)">
+                    <li class="list-group-item list-group-item-action drag-drop-item">
+                            <input data-bind="value: name, event: { blur: $root.clearTask }" />
+                    </li>
+                </span>
+            </div>
+        </script>
 
+        <!-- <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+            integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous""></script>
+        <script src=" https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.1.1/knockout-sortable.min.js"
+            integrity="sha256-taysS/xTzY/sODk/x/Jz/NCqUvBD6RMomzCGUjHbVNQ=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"
+            integrity="sha256-Tjl7WVgF1hgGMgUKZZfzmxOrtoSf8qltZ9wMujjGNQk=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script> -->
 
-        <!--Dragula is hopefully handled through service worker-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+        <script src=" https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.1.1/knockout-sortable.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="app.js"></script>
 </body>
 
