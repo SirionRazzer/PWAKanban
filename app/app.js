@@ -16,15 +16,15 @@ var ViewModel = function () {
     // Data
     var self = this;
     //self.listName = ko.observable();
-    self.highPriorityTasks = ko.observableArray([
+    self.todoTasks = ko.observableArray([
         new Task("Try to drag this item")
     ]);
-    self.highPriorityTasks.id = "high";
+    self.todoTasks.id = "todo";
 
-    self.normalPriorityTasks = ko.observableArray([
+    self.doingTasks = ko.observableArray([
         new Task("Try to trash this item")
     ]);
-    self.highPriorityTasks.id = "normal";
+    self.doingTasks.id = "doing";
 
     self.selectedTask = ko.observable();
     self.clearTask = function (data, event) {
@@ -33,8 +33,8 @@ var ViewModel = function () {
         }
 
         if (data.name() === "") {
-            self.highPriorityTasks.remove(data);
-            self.normalPriorityTasks.remove(data);
+            self.todoTasks.remove(data);
+            self.doingTasks.remove(data);
         }
     };
 
@@ -45,8 +45,7 @@ var ViewModel = function () {
     self.addTask = function () {
         var task = new Task("new");
         self.selectedTask(task);
-        self.normalPriorityTasks.push(task);
-        //hideModal();
+        self.todoTasks.push(task);
     };
     self.trash = ko.observableArray([]);
     self.trash.id = "trash";
@@ -56,11 +55,6 @@ var ViewModel = function () {
             console.log("Moved '" + arg.item.name() + "' from " + arg.sourceParent.id + " (index: " + arg.sourceIndex + ") to " + arg.targetParent.id + " (index " + arg.targetIndex + ")");
         }
     };
-}
-
-
-function hideModal() {
-    $('#addModal').modal('hide');
 }
 
 

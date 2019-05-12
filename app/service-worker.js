@@ -68,6 +68,13 @@ workbox.routing.registerRoute(
 );
 
 
+// jQuery UI - Extension library - touch hack library
+workbox.routing.registerRoute(
+	'https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js',
+	new workbox.strategies.StaleWhileRevalidate(),
+);
+
+
 // Knockoutjs MVVM library
 workbox.routing.registerRoute(
 	'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js',

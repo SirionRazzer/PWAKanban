@@ -29,30 +29,30 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <strong>High Priority</strong>
+                            <strong>Todo</strong>
                         </div>
                     </div>
                     <div style="min-height: 3rem;">
-                        <ul id='high' class="list-group list-group-flush"
-                            data-bind="sortable: {template: 'taskTmpl', data: highPriorityTasks, afterMove: myDropCallback }">
+                        <ul id='TODO' class="list-group list-group-flush"
+                            data-bind="sortable: {template: 'taskTmpl', data: todoTasks, afterMove: myDropCallback }">
                         </ul>
                     </div>
+                    <button type="button" class="btn btn-block btn-lg border-top btn-add"
+                        data-bind="click: addTask">Add</button>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <strong>Normal Priority</strong>
+                            <strong>Doing</strong>
                         </div>
                     </div>
                     <div style="min-height: 3rem;">
-                        <ul id='normal' class="list-group list-group-flush"
-                            data-bind="sortable: {template: 'taskTmpl', data: normalPriorityTasks, afterMove: myDropCallback }">
+                        <ul id='doing' class="list-group list-group-flush"
+                            data-bind="sortable: {template: 'taskTmpl', data: doingTasks, afterMove: myDropCallback }">
                         </ul>
                     </div>
-                    <button type="button" class="btn btn-block btn-lg border-top btn-add"
-                        data-bind="click: addTask">Add</button>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -86,6 +86,8 @@
             integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous""></script>
         <script src=" https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
             integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js" 
+            integrity="sha256-AAhU14J4Gv8bFupUUcHaPQfvrdNauRHMt+S4UVcaJb0=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.1.1/knockout-sortable.min.js"
             integrity="sha256-taysS/xTzY/sODk/x/Jz/NCqUvBD6RMomzCGUjHbVNQ=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"
@@ -95,6 +97,7 @@
 
         <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
         <script src=" https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script> <!--IMPORTANT: include directly AFTER jquery-ui.min.js-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.1.1/knockout-sortable.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
