@@ -2,6 +2,8 @@
 
 PWA kanban board stored offline on a device.
 
+[-> Check it out!](https://sirionrazzer.github.io/PWAKanban/)
+
 # Core components
 
 * manifest.json
