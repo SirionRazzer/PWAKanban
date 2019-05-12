@@ -1,6 +1,6 @@
 {
-  "name": "PWAKanban",
   "short_name": "Kanban",
+  "name": "PWAKanban",
   "theme_color": "#004c8c",
   "description": "Minimal kanban flow todo lists.",
   "background_color": "#58a5f0",

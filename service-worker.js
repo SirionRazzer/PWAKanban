@@ -1,4 +1,4 @@
-console.log('Service-worker.js registered')
+console.log('Service-worker.js registered');
 
 // Importing Workbox
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.1.1/workbox-sw.js');
