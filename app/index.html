@@ -38,7 +38,7 @@
                         </ul>
                     </div>
                     <button type="button" class="btn btn-block btn-lg border-top btn-add"
-                        data-bind="click: addTask">Add</button>
+                        data-bind="click: addTodoTask">Add</button>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -53,20 +53,29 @@
                             data-bind="sortable: {template: 'taskTmpl', data: doingTasks, afterMove: myDropCallback }">
                         </ul>
                     </div>
+                    <button type="button" class="btn btn-block btn-lg border-top btn-add"
+                        data-bind="click: addDoingTask">Add</button>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex align-items-center">
-                            <strong>Trash</strong>
+                            <strong>Done</strong>
                         </div>
                     </div>
                     <div style="min-height: 3rem;">
-                        <ul id='list3' class="list-group list-group-flush" data-bind="sortable: trash">
+                        <ul id='doing' class="list-group list-group-flush"
+                            data-bind="sortable: {template: 'taskTmpl', data: doneTasks, afterMove: myDropCallback }">
                         </ul>
                     </div>
+                    <button type="button" class="btn btn-block btn-lg border-top btn-add"
+                        data-bind="click: addDoneTask">Add</button>
                 </div>
+            </div>
+        </div>
+        <div class="row" style>
+            <div class="container trash w-100" data-bind="sortable: trash">
             </div>
         </div>
         <script id="taskTmpl" type="text/html">
@@ -97,7 +106,9 @@
 
         <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
         <script src=" https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script> <!--IMPORTANT: include directly AFTER jquery-ui.min.js-->
+        <!--IMPORTANT: include directly AFTER jquery-ui.min.js-->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.1.1/knockout-sortable.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>

@@ -26,7 +26,13 @@ var ViewModel = function () {
     ]);
     self.doingTasks.id = "doing";
 
+    self.doneTasks = ko.observableArray([
+        new Task("Try to move this item")
+    ]);
+    self.doingTasks.id = "done";
+
     self.selectedTask = ko.observable();
+
     self.clearTask = function (data, event) {
         if (data === self.selectedTask()) {
             self.selectedTask(null);
@@ -35,6 +41,7 @@ var ViewModel = function () {
         if (data.name() === "") {
             self.todoTasks.remove(data);
             self.doingTasks.remove(data);
+            self.doneTasks.remove(data);
         }
     };
 
@@ -42,11 +49,22 @@ var ViewModel = function () {
         return task === self.selectedTask();
     };
 
-    self.addTask = function () {
+    self.addTodoTask = function () {
         var task = new Task("new");
         self.selectedTask(task);
         self.todoTasks.push(task);
     };
+    self.addDoingTask = function () {
+        var task = new Task("new");
+        self.selectedTask(task);
+        self.doingTasks.push(task);
+    };
+    self.addDoneTask = function () {
+        var task = new Task("new");
+        self.selectedTask(task);
+        self.doneTasks.push(task);
+    };
+
     self.trash = ko.observableArray([]);
     self.trash.id = "trash";
 

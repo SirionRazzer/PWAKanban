@@ -21,9 +21,9 @@ body {
 }
 
 .trash {
-    background-color: #000;
+    height: 600px;
 }
 
 .item input {
-    width: 100px;
+    width: 100%;
 }
