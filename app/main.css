@@ -8,8 +8,22 @@ body {
 
 .card {
     border-radius: 0;
+    margin-top: 16px;
 }
 
 .drag-drop-item {
     touch-action: none;
+    cursor: move;
+}
+
+.ko_container {
+    min-height: 100px;
+}
+
+.trash {
+    background-color: #000;
+}
+
+.item input {
+    width: 100px;
 }
