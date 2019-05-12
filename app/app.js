@@ -16,19 +16,13 @@ var ViewModel = function () {
     // Data
     var self = this;
     //self.listName = ko.observable();
-    self.todoTasks = ko.observableArray([
-        new Task("Try to drag this item")
-    ]);
+    self.todoTasks = ko.observableArray([]);
     self.todoTasks.id = "todo";
 
-    self.doingTasks = ko.observableArray([
-        new Task("Try to trash this item")
-    ]);
+    self.doingTasks = ko.observableArray([]);
     self.doingTasks.id = "doing";
 
-    self.doneTasks = ko.observableArray([
-        new Task("Try to move this item")
-    ]);
+    self.doneTasks = ko.observableArray([]);
     self.doingTasks.id = "done";
 
     self.selectedTask = ko.observable();
@@ -64,6 +58,39 @@ var ViewModel = function () {
         self.selectedTask(task);
         self.doneTasks.push(task);
     };
+    self.save = function() {
+        var todoTasks = ko.toJSON({ tasks: self.todoTasks });
+        var doingTasks = ko.toJSON({ tasks: self.doingTasks });
+        var doneTasks = ko.toJSON({ tasks: self.doneTasks });
+
+        localStorage.setItem(
+            "todoTasks",
+            todoTasks
+        );
+
+        localStorage.setItem(
+            "doingTasks",
+            doingTasks
+        );
+
+        localStorage.setItem(
+            "doneTasks",
+            doneTasks
+        );
+    }
+    self.restore = function() {
+        var todoTasksJSON = localStorage.getItem("todoTasks");
+        var todoTasks = $.map(JSON.parse(todoTasksJSON).tasks, function(item) {return new Task(item.name) });
+        self.todoTasks(todoTasks);
+
+        var doingTasksJSON = localStorage.getItem("doingTasks");
+        var doingTasks = $.map(JSON.parse(doingTasksJSON).tasks, function(item) {return new Task(item.name) });
+        self.doingTasks(doingTasks);
+
+        var doneTasksJSON = localStorage.getItem("doneTasks");
+        var doneTasks = $.map(JSON.parse(doneTasksJSON).tasks, function(item) {return new Task(item.name) });
+        self.doneTasks(doneTasks);
+    }
 
     self.trash = ko.observableArray([]);
     self.trash.id = "trash";
@@ -88,6 +115,9 @@ ko.bindingHandlers.visibleAndSelect = {
     }
 };
 
+var localStorage = window.localStorage;
+
+// localStorage.clear();
 
 var model = new ViewModel()
 ko.applyBindings(model);
