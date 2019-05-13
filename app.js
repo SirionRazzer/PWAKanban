@@ -1,3 +1,9 @@
+navigator.serviceWorker.getRegistrations().then(function (registrations) {
+    for (let registration of registrations) {
+        registration.unregister();
+    }
+})
+
 // Check that service workers are registered
 if ('serviceWorker' in navigator) {
     // Use the window load event to keep the page load performant
@@ -58,10 +64,16 @@ var ViewModel = function () {
         self.selectedTask(task);
         self.doneTasks.push(task);
     };
-    self.save = function() {
-        var todoTasks = ko.toJSON({ tasks: self.todoTasks });
-        var doingTasks = ko.toJSON({ tasks: self.doingTasks });
-        var doneTasks = ko.toJSON({ tasks: self.doneTasks });
+    self.save = function () {
+        var todoTasks = ko.toJSON({
+            tasks: self.todoTasks
+        });
+        var doingTasks = ko.toJSON({
+            tasks: self.doingTasks
+        });
+        var doneTasks = ko.toJSON({
+            tasks: self.doneTasks
+        });
 
         localStorage.setItem(
             "todoTasks",
@@ -78,17 +90,23 @@ var ViewModel = function () {
             doneTasks
         );
     }
-    self.restore = function() {
+    self.restore = function () {
         var todoTasksJSON = localStorage.getItem("todoTasks");
-        var todoTasks = $.map(JSON.parse(todoTasksJSON).tasks, function(item) {return new Task(item.name) });
+        var todoTasks = $.map(JSON.parse(todoTasksJSON).tasks, function (item) {
+            return new Task(item.name)
+        });
         self.todoTasks(todoTasks);
 
         var doingTasksJSON = localStorage.getItem("doingTasks");
-        var doingTasks = $.map(JSON.parse(doingTasksJSON).tasks, function(item) {return new Task(item.name) });
+        var doingTasks = $.map(JSON.parse(doingTasksJSON).tasks, function (item) {
+            return new Task(item.name)
+        });
         self.doingTasks(doingTasks);
 
         var doneTasksJSON = localStorage.getItem("doneTasks");
-        var doneTasks = $.map(JSON.parse(doneTasksJSON).tasks, function(item) {return new Task(item.name) });
+        var doneTasks = $.map(JSON.parse(doneTasksJSON).tasks, function (item) {
+            return new Task(item.name)
+        });
         self.doneTasks(doneTasks);
     }
 
