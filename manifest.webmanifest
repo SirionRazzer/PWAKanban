@@ -6,7 +6,8 @@
   "background_color": "#58a5f0",
   "display": "fullscreen",
   "orientation": "portrait",
-  "start_url": "/PWAKanban/",
+  "scope": "/",
+  "start_url": "https://sirionrazzer.github.io/PWAKanban/",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
