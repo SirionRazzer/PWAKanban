@@ -1,17 +1,9 @@
-navigator.serviceWorker.getRegistrations().then(function (registrations) {
-    for (let registration of registrations) {
-        registration.unregister();
-    }
-})
-
 // Check that service workers are registered
 if ('serviceWorker' in navigator) {
-    // Use the window load event to keep the page load performant
-    window.addEventListener('load', () => {
+    window.addEventListener('load', function () {
         navigator.serviceWorker.register('/service-worker.js');
     });
 }
-
 
 var Task = function (name) {
     this.name = ko.observable(name);
