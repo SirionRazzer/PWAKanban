@@ -1,6 +1,6 @@
 # PWAKanban
 
-PWA kanban board stored offline on a device.
+PWA kanban board usable offline on any device.
 
 Check the demo below.
 IMPORTANT: Demo below won't start service-worker.js due to Github Pages restriction.
