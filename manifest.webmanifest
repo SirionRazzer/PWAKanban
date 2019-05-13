@@ -6,7 +6,7 @@
   "background_color": "#58a5f0",
   "display": "fullscreen",
   "orientation": "portrait",
-  "start_url": "/",
+  "start_url": "/PWAKanban/",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
