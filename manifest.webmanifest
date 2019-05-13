@@ -4,10 +4,9 @@
   "theme_color": "#004c8c",
   "description": "Minimal kanban flow todo lists.",
   "background_color": "#58a5f0",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "portrait",
-  "Scope": "/",
-  "start_url": "/index.html",
+  "start_url": "/",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
