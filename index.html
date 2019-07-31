@@ -32,8 +32,8 @@
                 PWAKanban
             </a>
             <div>
-                <button type="button" class="btn btn-success" onclick="model.save();">Save</button>
-                <button type="button" class="btn btn-success" onclick="model.restore();">Restore</button>
+                <button type="button" class="btn btn-danger" id="btnClear"
+                    onclick="clearLocalStorageAndRefresh()">Clear</button>
                 <button type="button" class="btn btn-outline-light" data-toggle="modal"
                     data-target="#infoModal">?</button>
             </div>
@@ -48,12 +48,13 @@
                         </div>
                     </div>
                     <div style="min-height: 3rem;">
-                        <ul id='TODO' class="list-group list-group-flush"
+                        <ul id='todo' class="list-group list-group-flush"
+                            style="background: #efefef; padding: 8px 8px 0px 8px;"
                             data-bind="sortable: {template: 'taskTmpl', data: todoTasks, afterMove: myDropCallback }">
                         </ul>
                     </div>
                     <button type="button" class="btn btn-block btn-lg border-top btn-add"
-                        data-bind="click: addTodoTask">Add</button>
+                        data-bind="click: addTodoTask">+</button>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -65,11 +66,12 @@
                     </div>
                     <div style="min-height: 3rem;">
                         <ul id='doing' class="list-group list-group-flush"
+                            style="background: #efefef; padding: 8px 8px 0px 8px;"
                             data-bind="sortable: {template: 'taskTmpl', data: doingTasks, afterMove: myDropCallback }">
                         </ul>
                     </div>
                     <button type="button" class="btn btn-block btn-lg border-top btn-add"
-                        data-bind="click: addDoingTask">Add</button>
+                        data-bind="click: addDoingTask">+</button>
                 </div>
             </div>
             <div class="col-sm-4">
@@ -80,16 +82,17 @@
                         </div>
                     </div>
                     <div style="min-height: 3rem;">
-                        <ul id='doing' class="list-group list-group-flush"
+                        <ul id='done' class="list-group list-group-flush"
+                            style="background: #efefef; padding: 8px 8px 0px 8px;"
                             data-bind="sortable: {template: 'taskTmpl', data: doneTasks, afterMove: myDropCallback }">
                         </ul>
                     </div>
                     <button type="button" class="btn btn-block btn-lg border-top btn-add"
-                        data-bind="click: addDoneTask">Add</button>
+                        data-bind="click: addDoneTask">+</button>
                 </div>
             </div>
         </div>
-        <div class="row" style>
+        <div class="row" style="margin: 8px 0px 8px 0px;">
             <div class="container trash w-100" data-bind="sortable: trash">
             </div>
         </div>
@@ -98,10 +101,12 @@
             <div class="item">
                 <span data-bind="visible: !$root.isTaskSelected($data)">
                     <li class="list-group-item list-group-item-action drag-drop-item"
+                        style="background: white; height: 3.2em; border: 1px solid #e2e2e2; margin-bottom: 8px;"
                         data-bind="text: name, click: $root.selectedTask" />
                 </span>
                 <span data-bind="visibleAndSelect: $root.isTaskSelected($data)">
-                    <li class="list-group-item list-group-item-action drag-drop-item">
+                    <li style="background: white; height: 3.2em; border: 1px solid #e2e2e2; margin-bottom: 8px;"
+                        class="list-group-item list-group-item-action drag-drop-item">
                         <input data-bind="value: name, event: { blur: $root.clearTask }" />
                     </li>
                 </span>
@@ -119,8 +124,15 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        Welcome to PWAKanban! You can create, edit, move and trash tasks. How to trash the task? Move it
-                        out of the list to the area below lists.
+                        <ul>
+                            <li>Works offline</li>
+                            <li>Changes are preserved</li>
+                            <li>Cards stored locally</li>
+                            <li>Trash single task by moving it to the area below lists</li>
+                            <li>Get shortcut in your Windows's menu or Android's launcher after installing</li>
+                            <li><a href="https://sirionrazzer.github.io/PWAKanban/">Homepage</a></li>
+                            <li><a href="https://github.com/SirionRazzer/PWAKanban">Source code</a></li>
+                        </ul>
                     </div>
                     <!-- <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
