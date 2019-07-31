@@ -4,8 +4,6 @@
 
 PWA kanban board usable offline on any device.
 
-Check the demo below.
-IMPORTANT: Demo below won't start service-worker.js due to Github Pages restriction.
 [-> Check it out!](https://sirionrazzer.github.io/PWAKanban/)
 
 # Core PWA components
