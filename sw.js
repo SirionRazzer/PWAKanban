@@ -133,10 +133,6 @@ self.__precacheManifest = [
   {
     "url": "README.md",
     "revision": "90113196a914283dd30547d40f5b1327"
-  },
-  {
-    "url": "service-worker.js",
-    "revision": "825737e2ff0ca9557cf63f0e230c9e76"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
