@@ -1,7 +1,7 @@
 // Check that service workers are registered
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/PWAKanban/service-worker.js');
+        navigator.serviceWorker.register('/PWAKanban/sw.js');
     });
 }
 
