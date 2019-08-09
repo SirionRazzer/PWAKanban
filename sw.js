@@ -74,6 +74,12 @@ workbox.routing.registerRoute(
 	new workbox.strategies.StaleWhileRevalidate(),
 );
 
+// Analytics SDK
+workbox.routing.registerRoute(
+	'https://www.googletagmanager.com/gtag/js?id=G-015ZZ5Y0C7',
+	new workbox.strategies.StaleWhileRevalidate(),
+);
+
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
  * requests for URLs in the manifest.
