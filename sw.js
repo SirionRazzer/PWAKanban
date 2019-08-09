@@ -68,6 +68,12 @@ workbox.routing.registerRoute(
 	new workbox.strategies.StaleWhileRevalidate(),
 );
 
+// Firebase SDK
+workbox.routing.registerRoute(
+	'https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js',
+	new workbox.strategies.StaleWhileRevalidate(),
+);
+
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
  * requests for URLs in the manifest.

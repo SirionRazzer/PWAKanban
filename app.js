@@ -166,3 +166,16 @@ function clearLocalStorageAndRefresh() {
 var model = new ViewModel()
 ko.applyBindings(model);
 model.restore();
+
+// Firebase configuration
+var firebaseConfig = {
+    apiKey: "AIzaSyDYh4b4BaNQTGfm2DjD0kOGcgaTgBYxUgA",
+    authDomain: "pwakanban.firebaseapp.com",
+    databaseURL: "https://pwakanban.firebaseio.com",
+    projectId: "pwakanban",
+    storageBucket: "",
+    messagingSenderId: "257149002759",
+    appId: "1:257149002759:web:af3f4290a6ba6c1f"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
