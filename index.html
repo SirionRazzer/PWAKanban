@@ -109,13 +109,13 @@
         <script id="taskTmpl" type="text/html">
             <div class="item">
                 <span data-bind="visible: !$root.isTaskSelected($data)">
-                    <li class="list-group-item list-group-item-action drag-drop-item"
-                        style="background: white; height: 3.2em; border: 1px solid #e2e2e2; margin-bottom: 8px;"
+                    <li class="list-group-item list-group-item-action drag-drop-item rounded"
+                        style="background: white; min-height: 3.2em; border: 1px solid #e2e2e2; margin-bottom: 8px;"
                         data-bind="text: name, click: $root.selectedTask" />
                 </span>
                 <span data-bind="visibleAndSelect: $root.isTaskSelected($data)">
-                    <li style="background: white; height: 3.2em; border: 1px solid #e2e2e2; margin-bottom: 8px;"
-                        class="list-group-item list-group-item-action drag-drop-item">
+                    <li style="background: white; min-height: 3.2em; border: 1px solid #e2e2e2; margin-bottom: 8px;"
+                        class="list-group-item list-group-item-action drag-drop-item rounded">
                         <input data-bind="value: name, event: { blur: $root.clearTask }" />
                     </li>
                 </span>
