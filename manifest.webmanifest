@@ -4,7 +4,7 @@
   "theme_color": "#004c8c",
   "description": "Minimal kanban flow todo lists.",
   "background_color": "#58a5f0",
-  "display": "minimal-ui",
+  "display": "standalone",
   "orientation": "any",
   "scope": "/PWAKanban/",
   "start_url": "https://sirionrazzer.github.io/PWAKanban/index.html",
