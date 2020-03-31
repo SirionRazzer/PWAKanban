@@ -11,7 +11,6 @@ var Task = function(name) {
   this.name = ko.observable(name);
   this.name.subscribe(function() {
     model.save();
-    console.log("item change");
   });
 };
 
@@ -42,21 +41,18 @@ var ViewModel = function() {
   self.todoTasks.id = "todo";
   self.todoTasks.subscribe(function() {
     self.save();
-    console.log("todo list change");
   });
 
   self.doingTasks = ko.observableArray([]);
   self.doingTasks.id = "doing";
   self.doingTasks.subscribe(function() {
     self.save();
-    console.log("doing list change");
   });
 
   self.doneTasks = ko.observableArray([]);
   self.doingTasks.id = "done";
   self.doneTasks.subscribe(function() {
     self.save();
-    console.log("done list change");
   });
 
   self.selectedTask = ko.observable();
@@ -167,7 +163,6 @@ ko.bindingHandlers.visibleAndSelect = {
 var localStorage = window.localStorage;
 
 function clearLocalStorageAndRefresh() {
-  console.log("asdasdfsdf");
   localStorage.clear();
   model.clear();
 }
