@@ -64,9 +64,16 @@ workbox.routing.registerRoute(
 
 // Firebase SDK
 workbox.routing.registerRoute(
-  'https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js',
+  'https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js',
   new workbox.strategies.StaleWhileRevalidate(),
 );
+
+// Firebase/Firestore SDK
+workbox.routing.registerRoute(
+  'https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js',
+  new workbox.strategies.StaleWhileRevalidate(),
+);
+
 
 // Analytics SDK
 workbox.routing.registerRoute(
