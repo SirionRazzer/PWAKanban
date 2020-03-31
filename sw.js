@@ -15,9 +15,9 @@ console.log('service-worker.js registered');
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 if (workbox) {
-	console.log(`Yay! Workbox is loaded also 🎉`);
+  console.log(`Yay! Workbox is loaded also 🎉`);
 } else {
-   	console.log(`Boo! Workbox didn't load 😬`);
+  console.log(`Boo! Workbox didn't load 😬`);
 }
 
 self.addEventListener('message', (event) => {
@@ -26,58 +26,52 @@ self.addEventListener('message', (event) => {
   }
 });
 
-
 // JQuery library
 workbox.routing.registerRoute(
-	'https://code.jquery.com/jquery-3.4.0.min.js',
-	new workbox.strategies.StaleWhileRevalidate(),
+  'https://code.jquery.com/jquery-3.4.0.min.js',
+  new workbox.strategies.StaleWhileRevalidate(),
 );
-
 
 // jQuery UI - Extension library
 workbox.routing.registerRoute(
-	'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
-	new workbox.strategies.StaleWhileRevalidate(),
+  'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js',
+  new workbox.strategies.StaleWhileRevalidate(),
 );
-
 
 // jQuery UI - Extension library - touch hack library
 workbox.routing.registerRoute(
-	'https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js',
-	new workbox.strategies.StaleWhileRevalidate(),
+  'https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js',
+  new workbox.strategies.StaleWhileRevalidate(),
 );
-
 
 // Knockoutjs MVVM library
 workbox.routing.registerRoute(
-	'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js',
-	new workbox.strategies.StaleWhileRevalidate(),
+  'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js',
+  new workbox.strategies.StaleWhileRevalidate(),
 );
-
 
 // Knockout - Sortable - Extension library
 workbox.routing.registerRoute(
-	'https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.1.1/knockout-sortable.min.js',
-	new workbox.strategies.StaleWhileRevalidate(),
+  'https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.1.1/knockout-sortable.min.js',
+  new workbox.strategies.StaleWhileRevalidate(),
 );
-
 
 // Bootstrap UI library
 workbox.routing.registerRoute(
-	'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js',
-	new workbox.strategies.StaleWhileRevalidate(),
+  'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js',
+  new workbox.strategies.StaleWhileRevalidate(),
 );
 
 // Firebase SDK
 workbox.routing.registerRoute(
-	'https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js',
-	new workbox.strategies.StaleWhileRevalidate(),
+  'https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js',
+  new workbox.strategies.StaleWhileRevalidate(),
 );
 
 // Analytics SDK
 workbox.routing.registerRoute(
-	'https://www.googletagmanager.com/gtag/js?id=G-015ZZ5Y0C7',
-	new workbox.strategies.StaleWhileRevalidate(),
+  'https://www.googletagmanager.com/gtag/js?id=G-015ZZ5Y0C7',
+  new workbox.strategies.StaleWhileRevalidate(),
 );
 
 /**

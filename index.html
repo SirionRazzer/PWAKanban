@@ -1,155 +1,261 @@
 <!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#004c8c" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#004c8c">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/images/icons/icon-512x512.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="384x384"
+      href="/images/icons/icon-384x384.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/images/icons/icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="152x152"
+      href="/images/icons/icon-152x152.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="144x144"
+      href="/images/icons/icon-144x144.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="128x128"
+      href="/images/icons/icon-128x128.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/images/icons/icon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="72x72"
+      href="/images/icons/icon-72x72.png"
+    />
 
-    <link rel="icon" type="image/png" sizes="512x512" href="/images/icons/icon-512x512.png">
-    <link rel="icon" type="image/png" sizes="384x384" href="/images/icons/icon-384x384.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="152x152" href="/images/icons/icon-152x152.png">
-    <link rel="icon" type="image/png" sizes="144x144" href="/images/icons/icon-144x144.png">
-    <link rel="icon" type="image/png" sizes="128x128" href="/images/icons/icon-128x128.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/icon-96x96.png">
-    <link rel="icon" type="image/png" sizes="72x72" href="/images/icons/icon-72x72.png">
-
-    <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <title>Kanban</title>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-015ZZ5Y0C7"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-015ZZ5Y0C7"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag('config', 'G-015ZZ5Y0C7');
+      gtag("config", "G-015ZZ5Y0C7");
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <nav class="navbar fixed-top justify-content-between">
-            <a class="navbar-brand" href="#">
-                <img src="images/icons/icon-192x192.png" width="30" height="30" alt="Logo image"
-                    class="d-inline-block align-top">
-                Kanban
-            </a>
-            <div>
-                <button type="button" class="btn btn-danger" id="btnClear"
-                    onclick="clearLocalStorageAndRefresh()">Clear</button>
-                <button type="button" class="btn btn-outline-light" data-toggle="modal"
-                    data-target="#infoModal">?</button>
-            </div>
-        </nav>
-
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <strong>Todo</strong>
-                        </div>
-                    </div>
-                    <div style="min-height: 3rem;">
-                        <ul id='todo' class="list-group list-group-flush"
-                            style="background: #DFE1E6; padding: 8px 8px 0px 8px;"
-                            data-bind="sortable: {template: 'taskTmpl', data: todoTasks, afterMove: myDropCallback }">
-                        </ul>
-                    </div>
-                    <button type="button" class="btn btn-block btn-lg border-top btn-add"
-                        data-bind="click: addTodoTask">+</button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <strong>Doing</strong>
-                        </div>
-                    </div>
-                    <div style="min-height: 3rem;">
-                        <ul id='doing' class="list-group list-group-flush"
-                            style="background: #DFE1E6; padding: 8px 8px 0px 8px;"
-                            data-bind="sortable: {template: 'taskTmpl', data: doingTasks, afterMove: myDropCallback }">
-                        </ul>
-                    </div>
-                    <button type="button" class="btn btn-block btn-lg border-top btn-add"
-                        data-bind="click: addDoingTask">+</button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <strong>Done</strong>
-                        </div>
-                    </div>
-                    <div style="min-height: 3rem;">
-                        <ul id='done' class="list-group list-group-flush"
-                            style="background: #DFE1E6; padding: 8px 8px 0px 8px;"
-                            data-bind="sortable: {template: 'taskTmpl', data: doneTasks, afterMove: myDropCallback }">
-                        </ul>
-                    </div>
-                    <button type="button" class="btn btn-block btn-lg border-top btn-add"
-                        data-bind="click: addDoneTask">+</button>
-                </div>
-            </div>
+      <nav class="navbar fixed-top justify-content-between">
+        <a class="navbar-brand" href="#">
+          <img
+            src="images/icons/icon-192x192.png"
+            width="30"
+            height="30"
+            alt="Logo image"
+            class="d-inline-block align-top"
+          />
+          Kanban
+        </a>
+        <div>
+          <button
+            type="button"
+            class="btn btn-danger"
+            id="btnClear"
+            onclick="clearLocalStorageAndRefresh()"
+          >
+            Clear
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-light"
+            data-toggle="modal"
+            data-target="#infoModal"
+          >
+            ?
+          </button>
         </div>
-        <div class="row" style="margin: 8px 0px 8px 0px;">
-            <div class="container trash w-100" data-bind="sortable: trash">
+      </nav>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-header">
+              <div class="d-flex align-items-center">
+                <strong>Todo</strong>
+              </div>
             </div>
+            <div style="min-height: 3rem;">
+              <ul
+                id="todo"
+                class="list-group list-group-flush"
+                style="background: #DFE1E6; padding: 8px 8px 0px 8px;"
+                data-bind="sortable: {template: 'taskTmpl', data: todoTasks, afterMove: myDropCallback }"
+              ></ul>
+            </div>
+            <button
+              type="button"
+              class="btn btn-block btn-lg border-top btn-add"
+              data-bind="click: addTodoTask"
+            >
+              +
+            </button>
+          </div>
         </div>
-
-        <script id="taskTmpl" type="text/html">
-            <div class="item">
-                <span data-bind="visible: !$root.isTaskSelected($data)">
-                    <li class="list-group-item list-group-item-action drag-drop-item rounded with-fadeout"
-                        style="background: white; min-height: 3.2em; border: 1px solid #e2e2e2; margin-bottom: 8px;"
-                        data-bind="text: name, click: $root.selectedTask" />
-                </span>
-                <span data-bind="visibleAndSelect: $root.isTaskSelected($data)">
-                    <li style="background: white; min-height: 3.2em; border: 1px solid #e2e2e2; margin-bottom: 8px;"
-                        class="list-group-item list-group-item-action drag-drop-item rounded with-fadeout">
-                        <input data-bind="value: name, event: { blur: $root.clearTask }" />
-                    </li>
-                </span>
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-header">
+              <div class="d-flex align-items-center">
+                <strong>Doing</strong>
+              </div>
             </div>
-        </script>
+            <div style="min-height: 3rem;">
+              <ul
+                id="doing"
+                class="list-group list-group-flush"
+                style="background: #DFE1E6; padding: 8px 8px 0px 8px;"
+                data-bind="sortable: {template: 'taskTmpl', data: doingTasks, afterMove: myDropCallback }"
+              ></ul>
+            </div>
+            <button
+              type="button"
+              class="btn btn-block btn-lg border-top btn-add"
+              data-bind="click: addDoingTask"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-header">
+              <div class="d-flex align-items-center">
+                <strong>Done</strong>
+              </div>
+            </div>
+            <div style="min-height: 3rem;">
+              <ul
+                id="done"
+                class="list-group list-group-flush"
+                style="background: #DFE1E6; padding: 8px 8px 0px 8px;"
+                data-bind="sortable: {template: 'taskTmpl', data: doneTasks, afterMove: myDropCallback }"
+              ></ul>
+            </div>
+            <button
+              type="button"
+              class="btn btn-block btn-lg border-top btn-add"
+              data-bind="click: addDoneTask"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin: 8px 0px 8px 0px;">
+        <div class="container trash w-100" data-bind="sortable: trash"></div>
+      </div>
 
-        <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="Info modal"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Kanban</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <ul>
-                            <li>Works offline</li>
-                            <li>Changes are preserved</li>
-                            <li>Cards stored locally</li>
-                            <li>Trash single task by moving it to the area below lists</li>
-                            <li>Get shortcut in your Windows's menu or Android's launcher after installing</li>
-                            <li><a href="https://sirionrazzer.github.io/PWAKanban/">Homepage</a></li>
-                            <li><a href="https://github.com/SirionRazzer/PWAKanban">Source code</a></li>
-                        </ul>
-                    </div>
-                    <!-- <div class="modal-footer">
+      <script id="taskTmpl" type="text/html">
+        <div class="item">
+            <span data-bind="visible: !$root.isTaskSelected($data)">
+                <li class="list-group-item list-group-item-action drag-drop-item rounded with-fadeout"
+                    style="background: white; min-height: 3.2em; border: 1px solid #e2e2e2; margin-bottom: 8px;"
+                    data-bind="text: name, click: $root.selectedTask" />
+            </span>
+            <span data-bind="visibleAndSelect: $root.isTaskSelected($data)">
+                <li style="background: white; min-height: 3.2em; border: 1px solid #e2e2e2; margin-bottom: 8px;"
+                    class="list-group-item list-group-item-action drag-drop-item rounded with-fadeout">
+                    <input data-bind="value: name, event: { blur: $root.clearTask }" />
+                </li>
+            </span>
+        </div>
+      </script>
+
+      <div
+        class="modal fade"
+        id="infoModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="Info modal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Kanban</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <ul>
+                <li>Works offline</li>
+                <li>Changes are preserved</li>
+                <li>Cards stored locally</li>
+                <li>Trash single task by moving it to the area below lists</li>
+                <li>
+                  Get shortcut in your Windows's menu or Android's launcher
+                  after installing
+                </li>
+                <li>
+                  <a href="https://sirionrazzer.github.io/PWAKanban/"
+                    >Homepage</a
+                  >
+                </li>
+                <li>
+                  <a href="https://github.com/SirionRazzer/PWAKanban"
+                    >Source code</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!-- <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary">Save changes</button>
                     </div> -->
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- <script src="https://code.jquery.com/jquery-3.4.0.min.js"
@@ -168,13 +274,11 @@
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src=" https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <!--IMPORTANT: include directly AFTER jquery-ui.min.js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.1.1/knockout-sortable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
     <script src="app.js"></script>
-</body>
-
+  </body>
 </html>
