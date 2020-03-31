@@ -89,7 +89,7 @@ workbox.routing.registerRoute(
 self.__precacheManifest = [
   {
     "url": "app.js",
-    "revision": "7b2c223612f62713bb94a01c6038fdaa"
+    "revision": "b796cb483b363e0d777b60dbcace4aeb"
   },
   {
     "url": "bootstrap.min.css",
@@ -129,23 +129,23 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "71bac4bdbe0e48d748fcf6d2375ed230"
+    "revision": "07155676a5f2bc42695de604295653d4"
   },
   {
     "url": "main.css",
-    "revision": "595e485899586a37c7619739b8d11810"
+    "revision": "38b651e8201466fe1d1b009ae807fd4e"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "1fbb3ef8e02e65b8c52920626e432269"
+    "revision": "687166fc8aa941e5f29418814f2ff785"
   },
   {
     "url": "package.json",
-    "revision": "dc6478e0435e5097dc948e7ea899aaa5"
+    "revision": "cecd7e12fb54a1d50aeddd57edc9764c"
   },
   {
     "url": "README.md",
-    "revision": "90113196a914283dd30547d40f5b1327"
+    "revision": "ea3a14c4b3724a2b1fa4c88d05bb7503"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
