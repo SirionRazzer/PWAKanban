@@ -44,12 +44,6 @@ workbox.routing.registerRoute(
   new workbox.strategies.StaleWhileRevalidate(),
 );
 
-// Knockoutjs MVVM library
-workbox.routing.registerRoute(
-  'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js',
-  new workbox.strategies.StaleWhileRevalidate(),
-);
-
 // Knockout - Sortable - Extension library
 workbox.routing.registerRoute(
   'https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.2.0/knockout-sortable.min.js',
@@ -146,6 +140,10 @@ self.__precacheManifest = [
   {
     "url": "README.md",
     "revision": "949035dc3f334275dd7d81be6ebb2de8"
+  },
+  {
+    "url": "lib/knockout-3.5.1.js",
+    "revision": ""
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
