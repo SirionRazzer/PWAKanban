@@ -46,13 +46,13 @@ workbox.routing.registerRoute(
 
 // Knockoutjs MVVM library
 workbox.routing.registerRoute(
-  'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-min.js',
   new workbox.strategies.StaleWhileRevalidate(),
 );
 
 // Knockout - Sortable - Extension library
 workbox.routing.registerRoute(
-  'https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.1.1/knockout-sortable.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.2.0/knockout-sortable.min.js',
   new workbox.strategies.StaleWhileRevalidate(),
 );
 
