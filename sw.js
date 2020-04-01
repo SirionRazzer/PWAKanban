@@ -46,6 +46,12 @@ workbox.routing.registerRoute(
 
 // Knockout - Sortable - Extension library
 workbox.routing.registerRoute(
+  'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js',
+  new workbox.strategies.StaleWhileRevalidate(),
+);
+
+// Knockout - Sortable - Extension library
+workbox.routing.registerRoute(
   'https://cdnjs.cloudflare.com/ajax/libs/knockout-sortable/1.2.0/knockout-sortable.min.js',
   new workbox.strategies.StaleWhileRevalidate(),
 );
@@ -140,10 +146,6 @@ self.__precacheManifest = [
   {
     "url": "README.md",
     "revision": "949035dc3f334275dd7d81be6ebb2de8"
-  },
-  {
-    "url": "lib/knockout-3.5.1.js",
-    "revision": "0b0128ab9e61554877cbb24986c24f04"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
