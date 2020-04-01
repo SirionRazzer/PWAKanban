@@ -129,7 +129,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "07155676a5f2bc42695de604295653d4"
+    "revision": "5ffe26de34deb506868890c99690166f"
   },
   {
     "url": "main.css",
@@ -145,7 +145,7 @@ self.__precacheManifest = [
   },
   {
     "url": "README.md",
-    "revision": "ea3a14c4b3724a2b1fa4c88d05bb7503"
+    "revision": "949035dc3f334275dd7d81be6ebb2de8"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
