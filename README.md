@@ -2,7 +2,8 @@
 
 # Kanban
 
-PWA kanban board usable offline on any device.
+PWA kanban board usable offline on any device with optional synchronization of board.
+[NEW] You can synchronize your board across devices!
 
 [-> Check it out!](https://sirionrazzer.github.io/PWAKanban/)
 
@@ -25,3 +26,8 @@ PWA kanban board usable offline on any device.
 # Move to other domain
 
 * change "start_url" and "scope" in manifest.webmanifest (for example "/" is used if web is placed like https://example.com/index.html)
+
+# Developer notes
+
+* regenerate revision hashes for sw.js precacheManifest with Workbox manually
+> workbox 
