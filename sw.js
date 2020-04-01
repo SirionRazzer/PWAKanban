@@ -123,7 +123,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "10a4e6171c40154069686c3eab935347"
+    "revision": "d903034735e7d0631ab3eb9a981c549f"
   },
   {
     "url": "main.css",
@@ -143,7 +143,7 @@ self.__precacheManifest = [
   },
   {
     "url": "lib/knockout-3.5.1.js",
-    "revision": ""
+    "revision": "0b0128ab9e61554877cbb24986c24f04"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
